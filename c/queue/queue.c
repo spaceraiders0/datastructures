@@ -89,6 +89,10 @@ void queue_print(Queue* q) {
      * Prints every value in the Queue.
      * @param q: the Queue to display
     */ 
+
+    for (queue_iter(n, q)) {
+        printf("%i\n", n->value);
+    }
 }
 
 Node* queue_dequeue(Queue* q) {
