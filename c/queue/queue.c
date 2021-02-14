@@ -8,7 +8,6 @@
 #include <stdarg.h>
 #include "queue.h"
 
-
 // Constructors
 Node* node_create(int new_value) {
     /*
@@ -95,6 +94,22 @@ void queue_print(Queue* q) {
     }
 }
 
+int queue_in(Queue* q, int find) {
+    /*
+     * Returns whether or not the value is inside the Queue.
+     * @param find: the value to find
+     * @returns: whether or not value is inside the Queue
+    */ 
+
+    for (queue_iter(n, q)) {
+        if (n->value == find) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 Node* queue_dequeue(Queue* q) {
     /*
      * Removes an entry from the front of the Queue. 
@@ -125,6 +140,15 @@ Node* queue_dequeue(Queue* q) {
 
     return dequed_node;
 }
+
+Node* queue_peek(Queue* q) {
+    /*
+     * Returns the front node without dequing it.
+     * @param q: the Queue to peek
+    */ 
+    
+    return q->head;
+} 
 
 // Iteration
 Node* queue_begin(Queue* q) {
