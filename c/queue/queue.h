@@ -24,11 +24,11 @@ typedef struct Node {
 } Node;
 
 
-Node* node_create(int new_value);
 Queue* queue_create(int count, ...);
 void queue_enqueue(Queue* q, int value);
 void queue_print(Queue* q);
 int queue_in(Queue* q, int value);
+Node* node_create(int new_value);
 Node* queue_dequeue(Queue* q);
 Node* queue_peek(Queue* p);
 Node* queue_begin(Queue* q);
