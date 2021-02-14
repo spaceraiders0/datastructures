@@ -1,4 +1,5 @@
 # C Stuff
 *.out
 *.ghc
+*.h.ghc
 main.c
