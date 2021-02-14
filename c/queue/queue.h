@@ -24,8 +24,8 @@ typedef struct Node {
 } Node;
 
 
-struct Node* node_create(int new_value);
-struct Queue* queue_create(int count, ...);
+Node* node_create(int new_value);
+Queue* queue_create(int count, ...);
 void queue_enqueue(Queue* q, int value);
 void queue_print(Queue* q);
 int queue_in(Queue* q, int value);
