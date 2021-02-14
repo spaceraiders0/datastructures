@@ -63,5 +63,82 @@ Queue* queue_create(int count, ...) {
 
 // Operations
 void queue_enqueue(Queue* q, int value) {
+    /*
+     * Adds a new entry to the end of the Queue.
+     * @param q: the queue to enqueue into
+     * @param value: the value to enqueue.
+    */ 
 
+    Node* new_tail = node_create(value);
+
+    // A null head calls for special behavior
+    if (q->head == NULL) {
+        q->head = new_tail;
+        q->tail = new_tail;
+    }
+    else {
+        q->tail->next_node = new_tail;
+        q->tail = new_tail;
+    }
+
+    q->size++;
+}
+
+void queue_print(Queue* q) {
+    /*
+     * Prints every value in the Queue.
+     * @param q: the Queue to display
+    */ 
+}
+
+Node* queue_dequeue(Queue* q) {
+    /*
+     * Removes an entry from the front of the Queue. 
+     * @param q: the queue to enqueue into
+     * @returns: a pointer to the removed Node
+    */ 
+
+    Node* dequed_node;
+
+    // If the size is 0, then there is nothing to remove.
+    if (q->size == 0) {
+        dequed_node = NULL;
+    }
+    // Size of 1 should set both the head and tail to NULL
+    else if (q->size == 1) {
+        dequed_node = q->head;
+
+        q->head = NULL;
+        q->tail = NULL;
+        q->size--;
+    }
+    else {
+        dequed_node = q->head;
+        q->head = dequed_node->next_node;
+        q->size--;
+    }
+
+
+    return dequed_node;
+}
+
+// Iteration
+Node* queue_begin(Queue* q) {
+    /*
+     * Returns the start of the Queue for iteration.
+     * @param q: the Queue to retrieve the beginning of.
+     * @returns: the head of the Queue
+    */ 
+
+    return q->head;
+}
+
+Node* queue_next(Node* n) {
+    /*
+     * Returns the next node in the Queue.
+     * @param n: the previous node
+     * @returns: the next node
+    */ 
+
+    return n->next_node;
 }
