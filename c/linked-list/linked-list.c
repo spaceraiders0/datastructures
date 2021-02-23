@@ -53,6 +53,8 @@ LinkedList* linked_create(int list_size, ...) {
     return new_list;
 }
 
+
+
 // Iteration
 Node* list_begin(LinkedList* l) {
     /*

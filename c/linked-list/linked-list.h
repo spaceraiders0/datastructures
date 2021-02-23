@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #define NODE_TYPE int 
-#define list_iter(n, list) Node* n = list_begin(list); n != NULL; n = list_next(list)
+#define list_iter(n, list) Node* n = list_begin(list); n != NULL; n = list_next(n)
 
 typedef struct Node {
     NODE_TYPE value;
