@@ -15,13 +15,13 @@ def QuickSort(source: list) -> list:
         return source
 
     # Divide
-    pivot_index = round(len(source) / 2)
-    pivot = source[pivot_index]
+    source_copy = source.copy()
+    pivot = source_copy.pop(round(len(source) / 2))
 
     # Re-arrange
     greater, lesser, pivots = [], [], [pivot]
 
-    for cmp_val in source:
+    for cmp_val in source_copy:
         if cmp_val == pivot:
             pivots.append(cmp_val)
         elif cmp_val >= pivot:
@@ -36,6 +36,7 @@ def QuickSort(source: list) -> list:
 if __name__ == "__main__":
     import random
 
-    dataset = [random.randrange(1, 11) for n in range(10)]
+    #dataset = [random.randrange(1, 11) for n in range(30)]
+    dataset = [1, 2, 3, 4]
     print(f"Unsorted: {', '.join(map(str, dataset))}")
     print(f"Sorted: {', '.join(map(str, QuickSort(dataset)))}")
