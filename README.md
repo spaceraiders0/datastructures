@@ -1,2 +1,2 @@
 # datastructures
-A collection of datastructures I have implemented in C and Python.
+A collection of datastructures and algorithms I have implemented in C and Python.
