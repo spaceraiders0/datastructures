@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 """QuickSort, an  O(n log n) algorithm that partitions a dataset based off a
-pivot point and sorts it from there.
+pivot point, collects datapoints larger and less than the pivot into their own
+individual lists, and recursively calls itself on them, eventually merging up
+the final lists.
+
+This implementation is pivot-optimized. Meaning that it collects all values
+that are the same as the piviot, and puts them in the middle so there is no
+need to sort through values that would go in the middle regardless.
 """
-
-
-# SOME GENERAL IMRPOVEMENTS:
-# check for multiple occurrances of the pivot, and collect them.
-# join them all in the same list, then do:
-# return lesser + [ALL_PIVOT_OCCURANCES] + greater
-
-# update the original source list, instead of copying it.
-# however, this does hinder thread safety.
 
 
 def QuickSort(source: list) -> list:
@@ -18,25 +15,22 @@ def QuickSort(source: list) -> list:
         return source
 
     # Divide
-    source_copy = source.copy()
     pivot_index = round(len(source) / 2)
-    pivot = source_copy.pop(pivot_index)
+    pivot = source[pivot_index]
 
     # Re-arrange
-    greater, lesser = [], []
+    greater, lesser, pivots = [], [], [pivot]
 
-    for cmp_val in source_copy:
-        if cmp_val >= pivot:
+    for cmp_val in source:
+        if cmp_val == pivot:
+            pivots.append(cmp_val)
+        elif cmp_val >= pivot:
             greater.append(cmp_val)
         else:
             lesser.append(cmp_val)
 
-    # Conquer
-    greater = QuickSort(greater)
-    lesser = QuickSort(lesser)
-
-    # Merge
-    return lesser + [pivot] + greater
+    # Conquer, and Merge
+    return QuickSort(lesser) + pivots + QuickSort(greater)
 
 
 if __name__ == "__main__":

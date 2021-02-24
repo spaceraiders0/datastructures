@@ -12,7 +12,7 @@ from MergeSort import MergeSort
 
 TIMES = 1
 SORT_COUNT = 10001
-dataset = [randrange(1, 100) for _ in range(SORT_COUNT)]
+dataset = [randrange(1, 1000) for _ in range(SORT_COUNT)]
 
 insertionsort_time = timeit(lambda: InsertionSort(dataset), number=TIMES)
 bubblesort_time = timeit(lambda: BubbleSort(dataset), number=TIMES)

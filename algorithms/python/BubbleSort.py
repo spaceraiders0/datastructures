@@ -7,12 +7,13 @@ one another.
 
 def BubbleSort(source: list) -> list:
     source_copy = source.copy()
+    source_len = len(source)
 
-    for index_a, value_a in enumerate(source_copy):
-        for index_b, value_b in enumerate(source_copy):
+    for index_a in range(source_len):
+        for index_b in range(source_len):
             temp_a, temp_b = source_copy[index_a], source_copy[index_b]
 
-            if value_a > value_b:
+            if temp_a > temp_b:
                 source_copy[index_a], source_copy[index_b] = temp_b, temp_a
 
     return source_copy
