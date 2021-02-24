@@ -36,7 +36,6 @@ def QuickSort(source: list) -> list:
 if __name__ == "__main__":
     import random
 
-    #dataset = [random.randrange(1, 11) for n in range(30)]
-    dataset = [1, 2, 3, 4]
+    dataset = [random.randrange(1, 11) for n in range(30)]
     print(f"Unsorted: {', '.join(map(str, dataset))}")
-    print(f"Sorted: {', '.join(map(str, QuickSort(dataset)))}")
+    print(f"  Sorted: {', '.join(map(str, QuickSort(dataset)))}")
