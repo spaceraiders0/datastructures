@@ -4,14 +4,8 @@
 another one.
 """
 
-import random
 
-unsorted_list = [random.randrange(1, 11) for n in range(1, 11)]
-
-print(f"Unsorted: {', '.join(map(str, unsorted_list))}")
-
-
-def insertion_sort(source: list) -> list:
+def InsertionSort(source: list) -> list:
     new_source = [source.pop(0)] if len(source) > 0 else []
 
     for cmp_val in source:
@@ -25,4 +19,10 @@ def insertion_sort(source: list) -> list:
     return new_source
 
 
-print(f"Sorted: {', '.join(map(str, insertion_sort(unsorted_list)))}")
+if __name__ == "__main__":
+    import random
+
+    unsorted_list = [random.randrange(1, 11) for n in range(1, 11)]
+
+    print(f"Unsorted: {', '.join(map(str, unsorted_list))}")
+    print(f"Sorted: {', '.join(map(str, InsertionSort(unsorted_list)))}")

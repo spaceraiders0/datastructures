@@ -4,13 +4,8 @@
 one another.
 """
 
-import random
 
-unsorted_list = [random.randrange(1, 11) for n in range(1, 11)]
-
-print(f"Unsorted: {', '.join(map(str, unsorted_list))}")
-
-def bubble_sort(source: list) -> list:
+def BubbleSort(source: list) -> list:
     source_copy = source.copy()
 
     for index_a, value_a in enumerate(source_copy):
@@ -22,5 +17,10 @@ def bubble_sort(source: list) -> list:
 
     return source_copy
 
-print(f"Unsorted: {', '.join(map(str, bubble_sort(unsorted_list)))}")
 
+if __name__ == "__main__":
+    import random
+
+    unsorted_list = [random.randrange(1, 11) for n in range(10)]
+    print(f"Unsorted: {', '.join(map(str, unsorted_list))}")
+    print(f"Sorted: {', '.join(map(str, BubbleSort(unsorted_list)))}")

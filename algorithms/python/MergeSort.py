@@ -3,13 +3,6 @@
 """MergeSort. A "Divide and Conquer" algorithm, implemented in Python.
 """
 
-import random
-
-dataset = [random.randrange(1, 10) for n in range(1, 10)]
-
-print(f"Unsorted: {', '.join(map(str, dataset))}")
-
-
 def MergeSort(unsorted: list):
     if len(unsorted) == 1:
         return unsorted
@@ -43,4 +36,10 @@ def MergeSort(unsorted: list):
 
     return sorted_list
 
-print(f"Sorted: {', '.join(map(str, MergeSort(dataset)))}")
+
+if __name__ == "__main__":
+    import random
+
+    dataset = [random.randrange(1, 11) for n in range(10)]
+    print(f"Unsorted: {', '.join(map(str, dataset))}")
+    print(f"Sorted: {', '.join(map(str, MergeSort(dataset)))}")
