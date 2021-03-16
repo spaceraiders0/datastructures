@@ -11,6 +11,9 @@ need to sort through values that would go in the middle regardless.
 
 
 def QuickSort(source: list) -> list:
+    """A pure Python implementation of QuickSort, with Optimized pivots.
+    """
+
     if len(source) <= 1:
         return source
 

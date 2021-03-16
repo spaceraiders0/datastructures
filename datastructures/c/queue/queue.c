@@ -23,6 +23,7 @@ Node* node_create(int new_value) {
     return new_node;
 }
 
+
 Queue* queue_create(int count, ...) {
     /*
      * A varadic function that creates a new Queue that is initialized
@@ -82,6 +83,7 @@ void queue_enqueue(Queue* q, int value) {
 
     q->size++;
 }
+
 
 void queue_print(Queue* q) {
     /*
