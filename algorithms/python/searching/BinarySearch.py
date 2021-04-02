@@ -4,6 +4,7 @@ it finds a target value. It can be performed iteratively, but also recursively.
 It only works on an already sorted array.
 """
 
+import multiprocessing.connection
 
 def BinarySearch(array: list, target: any) -> any:
     start, stop = 0, len(array) - 1
