@@ -3,14 +3,13 @@
  * will be crucial to basically every other data structure, which will also be
  * implemented using Macros for purposes of generic-ness.
  *
- * Minimum requirements:
- * - array_new (used for creating the structure belonging to a specific type)
- * - array_init (used for initiating the array's memory)
 */
 
+#include "stdio.h"
 #include <stdlib.h>
 #include <string.h>
 
+// Defines struct types.
 #define array_new(T)          \
     struct {                  \
         T* data;              \
@@ -22,7 +21,7 @@
 
 // Retrieves the size of the Array's data in bytes
 #define array_size(a) \
-    sizeof(*((a)->data))
+    sizeof(a->data)
 
 // Calculates the load factor of the Array
 #define array_load_factor(a) \
@@ -48,7 +47,7 @@
 #define array_resize(a) \
     if (array_load_factor(a) >= a->load_threshold) {                          \
         printf("Resizing array..\n");                                         \
-        a->data = realloc(a->data, sizeof(*a->data) * array_new_capacity(a)); \
+        a->data = realloc(a->data, sizeof(a->data) * array_new_capacity(a)); \
                                                                               \
         if (a->data == NULL) {                                                \
             fprintf(stderr, "Ran out of memory!\n");                          \
