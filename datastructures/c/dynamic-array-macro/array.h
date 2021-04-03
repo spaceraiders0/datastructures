@@ -5,7 +5,7 @@
  *
 */
 
-#include "stdio.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -46,7 +46,6 @@
 // Resizes the array if necessary
 #define array_resize(a) \
     if (array_load_factor(a) >= a->load_threshold) {                          \
-        printf("Resizing array..\n");                                         \
         a->data = realloc(a->data, sizeof(a->data) * array_new_capacity(a)); \
                                                                               \
         if (a->data == NULL) {                                                \
@@ -84,6 +83,11 @@
 
 // Insert a value at a specific index in an Array.
 #define array_insert(a, index, value)                    \
+    if (index < 0 | index >= a->length) {                \
+        fprintf(stderr, "Indexed out of bounds!\n");     \
+        abort();                                         \
+    }                                                    \
+                                                         \
     array_resize(a);                                     \
                                                          \
     for (int __i = a->length - 1; __i >= index; __i--) { \
