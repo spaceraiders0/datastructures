@@ -5,9 +5,14 @@
  *
 */
 
+#ifndef DYNAMIC_ARRAY_
+#define DYNAMIC_ARRAY_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define ARRAY_ITER(a, var) int var = 0; var < a->length; var++
 
 // Defines struct types.
 #define array_new(T)          \
@@ -82,21 +87,26 @@
     }                                                                     \
 
 // Insert a value at a specific index in an Array.
-#define array_insert(a, index, value)                    \
-    if (index < 0 | index >= a->length) {                \
-        fprintf(stderr, "Indexed out of bounds!\n");     \
-        abort();                                         \
-    }                                                    \
-                                                         \
-    array_resize(a);                                     \
-                                                         \
-    for (int __i = a->length - 1; __i >= index; __i--) { \
-        a->data[__i + 1] = a->data[__i];                 \
-        a->data[__i] = 0;                                \
-    }                                                    \
-                                                         \
-    a->length++;                                         \
-    a->data[index] = value;                              \
+#define array_insert(a, index, value)                        \
+    if (index < 0 | index > a->length) {                     \
+        fprintf(stderr, "Indexed out of bounds!\n");         \
+        abort();                                             \
+    }                                                        \
+                                                             \
+    array_resize(a);                                         \
+                                                             \
+    if (index == 0 && a->length == 0) {                      \
+        array_append(a, value);                              \
+    }                                                        \
+    else {                                                   \
+        for (int __i = a->length - 1; __i >= index; __i--) { \
+            a->data[__i + 1] = a->data[__i];                 \
+            a->data[__i] = 0;                                \
+        }                                                    \
+                                                             \
+        a->length++;                                         \
+        a->data[index] = value;                              \
+    }                                                        \
 
 // Find a value in an array.
 #define array_find(a, value, var)               \
@@ -119,3 +129,5 @@ typedef array_new(float)* array_float;
 typedef array_new(double)* array_double;
 typedef array_new(char*)* array_string;
 typedef array_new(void*)* array_void;
+
+#endif
